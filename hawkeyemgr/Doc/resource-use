@@ -1,0 +1,75 @@
+< 리소스 이름 가이드 >
+
+REST 에서는 기본 데이터 표현을 리소스라고 하고 이러한 요소에는  Data, metadata, link 가 있다
+
+1. Resource 는 단건일수도 있고 집합일수도 있다
+    - 손님들/customers
+    - 2번 ID 를 가진 손님 /customers/2
+
+2. Resource 는 Sub Resource 를 포함할수 있습니다
+	- 2 번 손님의 모든 계좌 /Customers/2/accounts
+	- 2 번 손님의 2번 계좌 /Customers/2/accounts/2
+	
+3. 동사가 아닌 명사로 Resource 를 표현하라
+	- Users of the System
+	- User Accounts
+	- Network Devices etc.
+	
+	http://api.example.com/device-management/managed-devices
+	http://api.example.com/device-management/managed-devices/{device-id}	
+
+좀더 구체적으로 나누면 Resource 의 표현방식은 document, collection, store 그리고 controller 4가지로 나눌수 있습니다.
+각각의 표현방식을 알아보도록 하겠습니다.
+
+- document
+	한개의 개체를 나타냄, 객체의 인스턴스, database 의 record 와 같은 개념, rest 에서는 리소스집합(Collection) 중 하나로
+  	하나로 표현되어지며 일반적으로 Collection 의 뒤에 / 를 통해 구분되어 집니다.
+	  
+  	http://api.example.com/device-management/managed-devices/{device-id}
+  	http://api.example.com/user-management/users/{id}
+  	http://api.example.com/user-management/users/admin
+	  
+- collection
+	Resource(document) 의 묶음, 사용자들은 새로운 Resource 를 다량으로 필요호할때 collection resource 를 호출합니다.
+	
+	http://api.example.com/device-managemet/managed-devices
+	http://api.example.com/device-managemet/users
+	http://api.example.com/device-managemet/users/{id}/accounts
+	
+- store
+	Client 가 Resource 를  저장할때 또는 뺄때, 클라이언트가 전송하는 key 로 저장하고 복수를 사용
+	
+	http://api.example.com/device-management/{id}/carts
+	http://api.example.com/device-management/{id}/playlists
+	
+- controller
+	Server function 의 개념, 동사사용 가능, Resource 의 절차적 개념
+	
+	http://api.example.com/device-management/users/{id}/cart/checkout	
+	http://api.example.com/device-management/users/{id}/playlist/play	
+	
+- Consistency is the key
+	1. 계층적 구조를 나타낼때 / 를 사용하라
+	2. URI path 제일 마지막에는 /를 사용하지 말란
+	3. -를 띄어쓰기 대신 사용하라
+	4. _를 사용하지 말라
+	5. 소물자를 사용하라
+	6. file 확장자를 사용하지 말라
+	
+- Query 사용
+	resource 를 정렬하거나 필턴할때 사용
+	
+	http://api.example.com/device-management/managed-devices		
+	http://api.example.com/device-management/managed-devices?region=USA
+	http://api.example.com/device-management/managed-devices?region=USA&sort=installation-date
+	
+- Get 에 대한 추가 사항
+	body 에 조건을 주면 캐쉬하지 못하므로 가능하면 param 으로 정보를 주어라
+	
+	
+[Reference ]
+	https://restfulapi.net/resource-naming/	
+	
+
+			
+	 	  
