@@ -1,0 +1,18 @@
+{
+	"intent": {
+		"id": "afefadfdf",
+		"name": "블럭 이름"
+	},
+	"userRequest": {
+		"timezone": "Asia/Seoul",
+		"params": {
+			"ignoreMe": "true"
+		},
+        "utterance": "발화내용123",
+	    "user": {
+            "id": "232323",
+            "type": "accountId",
+            "properties": {}
+        }
+	}
+}

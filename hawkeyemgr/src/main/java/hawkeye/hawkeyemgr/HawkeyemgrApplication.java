@@ -1,12 +1,14 @@
-package com.jumppang.hakeyemgr;
+package hawkeye.hawkeyemgr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class HawkeyemgrApplication {
+import hawkeye.common.core.hawkeyMgrBase;
 
-	public static void main(String[] args) {
+@SpringBootApplication
+public class HawkeyemgrApplication extends hawkeyMgrBase {
+
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(HawkeyemgrApplication.class, args);
 	}
 
